@@ -7,10 +7,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
-  
-  },
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ]
+,
 }
