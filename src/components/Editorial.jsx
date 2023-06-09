@@ -105,11 +105,13 @@ const Editorial = () => {
         setLevel((l) => l + 1);
         soundPlay(2)
         setEditedText("");
-        setShowText(generateWord(level));
+        let newstring = generateWord(level);
+        setShowText(newstring);
+
         let acu = Math.round((right / (right + wrong)) * 100);
         setAccuracy(acu >= 0 ? acu : 0);
         setCurrIndex(0);
-        dispatch({ type: "CHAR_UPDATE", payload: { ch: showText[0] } });
+        dispatch({ type: "CHAR_UPDATE", payload: { ch: newstring[0] } });
         setPrevlen(0);
 
         let timediff = stopStopwatch(startingTime);
