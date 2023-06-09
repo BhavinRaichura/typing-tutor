@@ -101,17 +101,20 @@ const Editorial = () => {
         setPrevlen(n);
     }
 
-    const updateLevel = () => {
+    const updateLevel = (func) => {
         setLevel((l) => l + 1);
         soundPlay(2)
         setEditedText("");
         let newstring = generateWord(level);
         setShowText(newstring);
+        
+    }
 
+    const updateStats = () =>{
         let acu = Math.round((right / (right + wrong)) * 100);
         setAccuracy(acu >= 0 ? acu : 0);
         setCurrIndex(0);
-        dispatch({ type: "CHAR_UPDATE", payload: { ch: newstring[0] } });
+        dispatch({ type: "CHAR_UPDATE", payload: { ch: showText[0] } });
         setPrevlen(0);
 
         let timediff = stopStopwatch(startingTime);
@@ -121,8 +124,11 @@ const Editorial = () => {
 
         setRight(0);
         setWrong(0);
-
     }
+
+    useEffect(() =>{
+        updateStats()
+    },[level])
 
     return (
         <div>
