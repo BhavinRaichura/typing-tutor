@@ -6,7 +6,7 @@ const InputForm = () => {
     
     const handleSubmit = (e)=>{
         e.preventDefault();
-
+        
     }
   return (
 
