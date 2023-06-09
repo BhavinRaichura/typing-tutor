@@ -52,7 +52,7 @@ const Editorial = () => {
 
     const [state, dispatch] = useReducer(reducerFn, { ch: "" });
 
-    useEffect(() => {
+   /* useEffect(() => {
         let acu = Math.round((right / (right + wrong)) * 100);
         setAccuracy(acu >= 0 ? acu : 0);
         setCurrIndex(0);
@@ -67,7 +67,7 @@ const Editorial = () => {
         setRight(0);
         setWrong(0);
 
-    }, [level]);
+    } );//, [level]);*/
 
     useEffect(() => {
         setStartingTime(startStopwatch());
@@ -105,7 +105,20 @@ const Editorial = () => {
         setLevel((l) => l + 1);
         soundPlay(2)
         setEditedText("");
-        setShowText(generateWord(level))
+        setShowText(generateWord(level));
+        let acu = Math.round((right / (right + wrong)) * 100);
+        setAccuracy(acu >= 0 ? acu : 0);
+        setCurrIndex(0);
+        dispatch({ type: "CHAR_UPDATE", payload: { ch: showText[0] } });
+        setPrevlen(0);
+
+        let timediff = stopStopwatch(startingTime);
+        setWPM(Math.round(60 / (timediff / level)));
+        console.log("wpm ", WPM)
+        setStartWriting(0);
+
+        setRight(0);
+        setWrong(0);
 
     }
 

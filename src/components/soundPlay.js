@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import keyPressSound from '../static/music/click-button.mp3'
 import invalidKeyPressed from '../static/music/invalid-key.mp3'
 import successMusic from '../static/music/success.mp3'
