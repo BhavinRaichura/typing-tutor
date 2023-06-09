@@ -1,10 +1,10 @@
 export function levelReducer(state, action){
     switch(action.type){
-        case :
+        case "LEVEL":
             return {
                 level: action.payload.level,
-                
-
             }
+        default:
+            return state;
     }
 }
