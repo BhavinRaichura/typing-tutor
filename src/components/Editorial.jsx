@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useState } from 'react'
 import Form from './Form';
 import soundPlay from './soundPlay';
 import Stats from './Stats';
-import InputForm from './InputForm';
+//import InputForm from './InputForm';
 import KeyBoard from './Keyboard';
 import { startStopwatch, stopStopwatch } from './TimeCalculation';
 import NavBar from './NavBar';
