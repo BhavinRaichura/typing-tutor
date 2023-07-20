@@ -101,20 +101,21 @@ const Editorial = () => {
         setPrevlen(n);
     }
 
-    const updateLevel = (func) => {
+    const updateLevel = async() => {
         setLevel((l) => l + 1);
         soundPlay(2)
         setEditedText("");
         let newstring = generateWord(level);
         setShowText(newstring);
+        updateStats(newstring);
         
     }
 
-    const updateStats = () =>{
+    const updateStats = (newstring) =>{
         let acu = Math.round((right / (right + wrong)) * 100);
         setAccuracy(acu >= 0 ? acu : 0);
         setCurrIndex(0);
-        dispatch({ type: "CHAR_UPDATE", payload: { ch: showText[0] } });
+        dispatch({ type: "CHAR_UPDATE", payload: { ch: newstring[0] } });
         setPrevlen(0);
 
         let timediff = stopStopwatch(startingTime);
@@ -126,9 +127,7 @@ const Editorial = () => {
         setWrong(0);
     }
 
-    useEffect(() =>{
-        updateStats()
-    },[level])
+    
 
     return (
         <div>
@@ -143,9 +142,11 @@ const Editorial = () => {
                         WPM={WPM}
                     />
                 </div>
+                {/*
                 <div className='m-1'>
                     <InputForm />
                 </div>
+                */}
             </div>
 
             <div className=' object-center'>
@@ -158,6 +159,7 @@ const Editorial = () => {
                         editedText={editedText}
                     />
                 </div>
+                
             </div>
             <div className=' mt-20 '>
                 <div className='flex justify-center'>
